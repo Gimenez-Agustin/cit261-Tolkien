@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Index cit-261</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="resources/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="resources/css/style.css" />
+    <script src="resources/js/js.js"></script>
+    <script>
+
+            function createInfoByName(name){
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var out="";
+                        var content = JSON.parse(this.responseText);
+                        for(var i=0; i<content.length;i++){
+                            if(name == content[i].name){
+                                out +='<h2>' + content[i].name + '</h2><br><strong>' + content[i].info + '</strong><br><br>';
+                            }
+                        }
+                        document.getElementById("info").innerHTML = out;
+                }
+                };
+                xhttp.open("GET", "https://api.myjson.com/bins/bq474", true);
+                xhttp.send(); 
+            }
+        </script>  
+</head>
+<body>
+    <table style="width: 100%; height: 100%;">
+        <tr><h1>J.R.R Tolkien Page</h1>
+            <h2>Characters<br> Put the mouse over the image and click to find out who is it:</h2>
+        </tr>
+        <tr>
+            <td colspan="1">  
+                <div id="menu">
+                    <ul >
+                        <li><a href="index.html">Index</a></li>
+                        <li><a href="add-books.html">Add books</a></li>
+                        <li><a href="read-information.html">Read information</a></li>
+                        <li><strong>Characters</strong></li>
+                        <li><a href="save-author.html">Save the Author</a></li>
+                    </ul>  
+                </div>                     
+            </td>
+            <td colspan="2">
+                <div>
+                    <table>
+                        <tr>
+                            <td><img onclick="createInfoByName('Bilbo')" src="resources/images/Bilbo.jpg" alt="Bilbo Baggens" width="200px" height="200px"></td>  
+                            <td><img onclick="createInfoByName('Aragorn')" src="resources/images/aragon.jpg" alt="Aragorn" width="200px" height="200px"></td>   
+                            <td><img onclick="createInfoByName('Frodo')" src="resources/images/frodo.jpg" alt="Frodo Baggens" width="200px" height="200px"></td>   
+                            <td><img onclick="createInfoByName('Gandalf')" src="resources/images/gandalf.jpg" alt="Gandalf the Grey" width="200px" height="200px"></td>   
+                        </tr>
+                        <tr>
+                            <td><img onclick="createInfoByName('Gollum')" src="resources/images/gollum.jpg" alt="Gollum" width="200px" height="200px"></td>   
+                            <td><img onclick="createInfoByName('Legolas')" src="resources/images/legolas.jpg" alt="Legolas" width="200px" height="200px"></td>    
+                            <td><img onclick="createInfoByName('Sauron')" src="resources/images/sauron.jpg" alt="Sauron" width="200px" height="200px"></td>   
+                            <td><img onclick="createInfoByName('Treebeard')" src="resources/images/Treebeard.jpg" alt="Treebeard" width="200px" height="200px"></td>   
+                        </tr>
+                    </table>   
+                </div>        
+            </td>
+            <td colspan="2"><div id="info" style="text-align: center"></div></td>
+                
+        </tr>
+        <tr>
+            <td>
+               
+            </td>
+        </tr>
+        <tr>
+            <td class="footer" colspan="5">
+                Image taken from <strong><a href="https://www.comicartfans.com/gallerypiece.asp?piece=1473275">comicartfans</a></strong>
+            </td>
+        </tr>
+        </table>
+</body>
+</html>
